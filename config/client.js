@@ -3,12 +3,20 @@
 // ================================================================
 
 export const config = {
+  // ── Lead routing ────────────────────────────────────────────
+  client:      'corridorhomes',
+  guideType:   'school-guide',
+  submitUrl:   'https://hooks.corridorhomes.ca/api/submit-lead',
+  redirectUrl: '',                    // leave empty to show success state in-page
+
+  // ── Agent ────────────────────────────────────────────────────
   agentName: 'Eric Johnson',
   agentTitle: 'REALTOR® | Engel & Völkers',
   agentPhone: '604.828.5704',
   agentEmail: 'info@corridorhomes.ca',
   agentPhoto: '/images/agent.jpg',
 
+  // ── Site ─────────────────────────────────────────────────────
   siteTitle: 'Squamish School Catchment Guide',
   city: 'Squamish',
   province: 'BC',

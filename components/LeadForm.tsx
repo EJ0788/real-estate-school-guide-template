@@ -4,8 +4,6 @@ import { useState } from 'react'
 import { config } from '@/config/client'
 import { catchments } from '@/data/catchments'
 
-const SUBMIT_URL = process.env.NEXT_PUBLIC_SUBMIT_URL ?? ''
-
 interface Props {
   headline?: string
   subtext?: string
@@ -25,17 +23,23 @@ export default function LeadForm({ headline, subtext, defaultNeighbourhood = '',
     if (!firstName || !lastName || !email) return
     setStatus('loading')
     try {
-      await fetch(SUBMIT_URL, {
+      await fetch(config.submitUrl, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           firstName, lastName, email, neighbourhood,
-          source: 'Squamish Neighbourhoods Guide 2026',
+          client: config.client,
+          guideType: config.guideType,
+          source,
           timestamp: new Date().toISOString(),
         }),
       })
     } catch { /* show success anyway */ }
-    setStatus('success')
+    if (config.redirectUrl) {
+      window.location.href = config.redirectUrl
+    } else {
+      setStatus('success')
+    }
   }
 
   return (
