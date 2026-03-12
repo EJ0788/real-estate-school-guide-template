@@ -16,7 +16,7 @@ export default function SchoolCard({ s }: { s: School }) {
       className="group bg-white rounded-sm border border-forest/10 hover:border-gold/40 hover:shadow-lg transition-all duration-200 flex flex-col overflow-hidden"
     >
       <div className="h-1 bg-gold w-full" />
-      <div className="p-6 flex flex-col flex-1 gap-4">
+      <div className="p-4 sm:p-6 flex flex-col flex-1 gap-4">
 
         {/* Grade badge + name */}
         <div className="flex items-start justify-between gap-3">
@@ -31,15 +31,23 @@ export default function SchoolCard({ s }: { s: School }) {
           </span>
         </div>
 
-        {/* Fraser rating */}
-        <div className="flex items-center gap-3">
-          <div className={`font-display text-2xl font-bold ${ratingColor}`}>
-            {s.fraserRating ? `${s.fraserRating}/10` : 'N/R'}
+        {/* Fraser rating / Independent label */}
+        {s.type === 'independent' ? (
+          <div className="flex items-center gap-3">
+            <div className="text-xs font-bold uppercase tracking-wider text-gold bg-gold/10 border border-gold/25 px-2.5 py-1 rounded-sm">
+              Independent School
+            </div>
           </div>
-          <div className="text-xs text-muted leading-tight">
-            Fraser Institute<br />Rating {!s.fraserRating && '(not ranked)'}
+        ) : (
+          <div className="flex items-center gap-3">
+            <div className={`font-display text-xl sm:text-2xl font-bold ${ratingColor}`}>
+              {s.fraserRating ? `${s.fraserRating}/10` : 'N/R'}
+            </div>
+            <div className="text-xs text-muted leading-tight">
+              Fraser Institute<br />Rating {!s.fraserRating && '(not ranked)'}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Tags */}
         <div className="flex flex-wrap gap-1.5">
@@ -48,12 +56,18 @@ export default function SchoolCard({ s }: { s: School }) {
               French Immersion
             </span>
           )}
-          <span className="text-xs text-muted bg-cream border border-forest/8 px-2 py-0.5 rounded-sm capitalize">
-            {s.type}
-          </span>
-          <span className="text-xs text-muted bg-cream border border-forest/8 px-2 py-0.5 rounded-sm">
-            {s.catchmentNeighbourhoods.length} {s.type === 'secondary' || s.type === 'middle' ? 'areas' : 'catchment area(s)'}
-          </span>
+          {s.type === 'independent' ? (
+            <span className="text-xs text-muted bg-cream border border-forest/8 px-2 py-0.5 rounded-sm">Open Enrollment</span>
+          ) : (
+            <>
+              <span className="text-xs text-muted bg-cream border border-forest/8 px-2 py-0.5 rounded-sm capitalize">
+                {s.type}
+              </span>
+              <span className="text-xs text-muted bg-cream border border-forest/8 px-2 py-0.5 rounded-sm">
+                {s.catchmentNeighbourhoods.length} {s.type === 'secondary' || s.type === 'middle' ? 'areas' : 'catchment area(s)'}
+              </span>
+            </>
+          )}
         </div>
 
         {/* Description preview */}

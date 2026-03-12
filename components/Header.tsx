@@ -8,7 +8,6 @@ const nav = [
   { label: 'Schools', href: '/' },
   { label: 'By Neighbourhood', href: '/neighbourhood/garibaldi-highlands' },
   { label: 'Compare Schools', href: '/compare' },
-  { label: 'Catchment Map', href: '/map' },
   { label: 'Neighbourhood Guide', href: config.neighbourhoodGuideUrl, external: true },
 ]
 
@@ -42,7 +41,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="md:hidden bg-forest-dark border-t border-white/10 px-5 py-4 flex flex-col gap-4">
+        <div className="md:hidden bg-forest-dark border-t border-white/10 px-5 py-4 flex flex-col gap-3 max-h-[calc(100svh-64px)] overflow-y-auto">
           {nav.map((l) => l.external ? (
             <a key={l.href} href={l.href} target="_blank" rel="noopener noreferrer"
               className="text-sm text-cream/75 hover:text-gold transition-colors" onClick={() => setOpen(false)}>{l.label}</a>

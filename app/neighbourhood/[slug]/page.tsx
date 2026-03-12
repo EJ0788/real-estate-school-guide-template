@@ -34,7 +34,7 @@ export default async function NeighbourhoodCatchmentPage({ params }: { params: P
     <>
       {/* Hero */}
       <section
-        className="py-20 md:py-28 relative"
+        className="py-14 md:py-20 lg:py-28 relative"
         style={{ background: 'linear-gradient(158deg, #091510 0%, #1B3A2D 55%, #243D2F 100%)' }}
       >
         <div className="absolute inset-0 bg-[rgba(9,21,16,0.35)]" aria-hidden="true" />
@@ -68,7 +68,7 @@ export default async function NeighbourhoodCatchmentPage({ params }: { params: P
 
       {/* Stats bar */}
       <div className="bg-forest">
-        <div className="mx-auto max-w-6xl px-5 py-4 flex flex-wrap gap-x-10 gap-y-2">
+        <div className="mx-auto max-w-6xl px-5 py-4 flex flex-wrap gap-x-4 sm:gap-x-10 gap-y-2">
           <Stat label="Elementary" value={catchment.elementaryName.split(' ').slice(0, 2).join(' ')} />
           <Stat label="Fraser Rating" value={catchment.fraserRating ? `${catchment.fraserRating}/10` : 'N/R'} />
           <Stat label="French Immersion" value={catchment.frenchImmersionAvailable ? 'Available' : 'Not here'} />
@@ -79,7 +79,7 @@ export default async function NeighbourhoodCatchmentPage({ params }: { params: P
 
       {/* Main */}
       <div className="mx-auto max-w-6xl px-5 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
           <div className="lg:col-span-2 flex flex-col gap-12">
 
             {/* Full K-12 pathway */}

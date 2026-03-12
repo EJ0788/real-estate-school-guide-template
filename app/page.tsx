@@ -8,6 +8,7 @@ import LeadForm from '@/components/LeadForm'
 const elementaries = schools.filter((s) => s.type === 'elementary')
 const middle = schools.find((s) => s.type === 'middle')!
 const secondary = schools.find((s) => s.type === 'secondary')!
+const independents = schools.filter((s) => s.type === 'independent')
 
 export default function HomePage() {
   return (
@@ -20,7 +21,7 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-[rgba(9,21,16,0.4)]" aria-hidden="true" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_20%_80%,rgba(201,168,76,0.07)_0%,transparent_55%)]" aria-hidden="true" />
 
-        <div className="relative z-10 mx-auto max-w-6xl px-5 py-20 text-center">
+        <div className="relative z-10 mx-auto max-w-6xl px-5 py-12 sm:py-20 text-center">
           <span className="inline-block text-[0.68rem] font-bold tracking-[0.16em] uppercase text-gold border border-gold/35 px-3 py-1 rounded-sm mb-6">
             SD48 Sea to Sky · {config.marketYear}
           </span>
@@ -34,8 +35,8 @@ export default function HomePage() {
             <a href="#schools" className="bg-gold hover:bg-gold-hover text-ink font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-sm transition-colors">
               Explore Schools
             </a>
-            <Link href="/map" className="border border-cream/30 hover:border-gold text-cream/80 hover:text-gold text-sm font-medium px-8 py-4 rounded-sm transition-colors">
-              View Catchment Map
+            <Link href="/compare" className="border border-cream/30 hover:border-gold text-cream/80 hover:text-gold text-sm font-medium px-8 py-4 rounded-sm transition-colors">
+              Compare Schools
             </Link>
           </div>
         </div>
@@ -43,9 +44,9 @@ export default function HomePage() {
 
       {/* ── STATS BAR ── */}
       <div className="bg-forest">
-        <div className="mx-auto max-w-6xl px-5 py-4 flex flex-wrap justify-center gap-x-10 gap-y-2">
+        <div className="mx-auto max-w-6xl px-5 py-4 flex flex-wrap justify-center gap-x-4 sm:gap-x-10 gap-y-2">
           {[
-            { val: '8', lbl: 'Schools covered' },
+            { val: '10', lbl: 'Schools covered' },
             { val: '6.1/10', lbl: 'Top Fraser rating (GHE)' },
             { val: 'K–12', lbl: 'Full pathway mapped' },
             { val: 'FI', lbl: 'French Immersion available' },
@@ -66,7 +67,7 @@ export default function HomePage() {
       </div>
 
       {/* ── ELEMENTARY SCHOOLS ── */}
-      <section id="schools" className="py-20 px-5">
+      <section id="schools" className="py-14 sm:py-20 px-5">
         <div className="mx-auto max-w-6xl">
           <p className="text-[0.68rem] font-bold tracking-[0.16em] uppercase text-gold mb-4">Elementary Schools</p>
           <div className="w-11 h-0.5 bg-gold mb-5" aria-hidden="true" />
@@ -101,6 +102,22 @@ export default function HomePage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
             <SchoolCard s={middle} />
             <SchoolCard s={secondary} />
+          </div>
+
+          {/* Independent & Alternative Schools */}
+          <div className="mt-16 pt-16 border-t border-forest/10">
+            <p className="text-[0.68rem] font-bold tracking-[0.16em] uppercase text-gold mb-4">Independent &amp; Alternative</p>
+            <div className="w-11 h-0.5 bg-gold mb-5" aria-hidden="true" />
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-forest mb-4">Independent &amp; Alternative Schools</h2>
+            <p className="text-muted leading-relaxed max-w-xl mb-2">
+              Tuition-based independent schools serving Squamish families. No SD48 catchment boundary applies — open to any neighbourhood.
+            </p>
+            <p className="text-xs text-muted mb-10 italic">
+              These schools are not ranked by the Fraser Institute and are not part of the SD48 public school system.
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              {independents.map((s) => <SchoolCard key={s.slug} s={s} />)}
+            </div>
           </div>
         </div>
       </section>

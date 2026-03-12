@@ -10,9 +10,10 @@ export interface School {
   website: string
   description: string
   programs: string[]
-  catchmentNeighbourhoods: string[]  // neighbourhood slugs
+  catchmentNeighbourhoods: string[]  // neighbourhood slugs; empty for independent/district-wide schools
   principalNote?: string
-  type: 'elementary' | 'middle' | 'secondary'
+  philosophy?: string           // educational philosophy — used for independent schools
+  type: 'elementary' | 'middle' | 'secondary' | 'independent'
 }
 
 export const schools: School[] = [
@@ -167,6 +168,42 @@ export const schools: School[] = [
       'dentville', 'northyards', 'sea-and-sky', 'britannia-beach', 'oceanfront-squamish',
     ],
     type: 'secondary',
+  },
+  {
+    slug: 'squamish-waldorf-school',
+    name: 'Squamish Waldorf School',
+    shortName: 'SWS',
+    grades: 'Pre-K–8',
+    frenchImmersion: false,
+    address: 'Squamish, BC',
+    phone: '604-892-5522',
+    website: 'https://www.squamishwaldorf.com',
+    description:
+      'Squamish Waldorf School (Cedar Valley Waldorf School) offers a Waldorf/Steiner education from Pre-Kindergarten through Grade 8. The curriculum is holistic and arts-integrated, weaving academic learning with music, movement, handwork, and connection to the natural world. Class sizes are intentionally small and the community is close-knit.',
+    programs: ['Waldorf/Steiner Curriculum', 'Arts-Integrated Learning', 'Nature-Based Education', 'Handwork & Crafts', 'Music & Movement', 'Small Class Sizes'],
+    catchmentNeighbourhoods: [],
+    philosophy: 'Waldorf/Steiner — holistic, arts-integrated, nature-based education from Pre-K through Grade 8.',
+    principalNote:
+      'A strong option for families seeking an alternative to standardised testing and conventional curricula. Open enrollment — any Squamish neighbourhood qualifies. Tuition-based; contact the school directly for current fee schedules and bursary availability.',
+    type: 'independent',
+  },
+  {
+    slug: 'squamish-montessori-school',
+    name: 'Squamish Montessori School',
+    shortName: 'SMS',
+    grades: 'Toddler–Gr. 4/5',
+    frenchImmersion: false,
+    address: 'Squamish, BC',
+    phone: '604-892-6006',
+    website: 'https://www.smsed.ca',
+    description:
+      'Squamish Montessori School offers AMI-certified Montessori education from the Toddler program (18 months) through elementary (up to Grade 4/5). Child-led learning in mixed-age classrooms encourages independence, curiosity, and self-motivation. The prepared environment allows children to progress at their own pace under the guidance of trained Montessori educators.',
+    programs: ['AMI Montessori Curriculum', 'Mixed-Age Classrooms', 'Child-Led Learning', 'Toddler Program (18 mo+)', 'Casa (3–6)', 'Elementary (6–12)'],
+    catchmentNeighbourhoods: [],
+    philosophy: 'AMI Montessori — child-led, mixed-age classrooms from Toddler (18 months) through elementary.',
+    principalNote:
+      'Ideal for families who value child-directed learning and want an alternative to the traditional grade-based structure. Open enrollment — no catchment boundary. Tuition-based; contact the school directly for current fees and registration timelines.',
+    type: 'independent',
   },
 ]
 

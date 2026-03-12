@@ -77,9 +77,9 @@ export default function ComparePage() {
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr>
-                  <th className="text-left px-4 py-3 bg-cream border border-forest/10 text-xs font-bold uppercase tracking-widest text-muted w-36">—</th>
+                  <th className="text-left px-2 sm:px-4 py-2 sm:py-3 bg-cream border border-forest/10 text-xs font-bold uppercase tracking-widest text-muted w-24 sm:w-36">—</th>
                   {chosen.map((s) => (
-                    <th key={s.slug} className="text-left px-4 py-3 bg-forest text-cream border border-forest/80">
+                    <th key={s.slug} className="text-left px-2 sm:px-4 py-2 sm:py-3 bg-forest text-cream border border-forest/80">
                       <div className="font-display font-semibold text-base leading-snug">{s.name}</div>
                       <div className="text-gold text-xs font-normal mt-0.5">Grades {s.grades}</div>
                     </th>
@@ -89,9 +89,9 @@ export default function ComparePage() {
               <tbody>
                 {ROWS.map((row, i) => (
                   <tr key={row.label} className={i % 2 === 0 ? 'bg-white' : 'bg-cream/60'}>
-                    <td className="px-4 py-3 text-xs font-bold uppercase tracking-wider text-muted/70 border border-forest/8 align-top">{row.label}</td>
+                    <td className="px-2 sm:px-4 py-2 sm:py-3 text-xs font-bold uppercase tracking-wider text-muted/70 border border-forest/8 align-top">{row.label}</td>
                     {chosen.map((s) => (
-                      <td key={s.slug} className="px-4 py-3 text-forest border border-forest/8 align-top leading-relaxed">{row.render(s)}</td>
+                      <td key={s.slug} className="px-2 sm:px-4 py-2 sm:py-3 text-forest border border-forest/8 align-top leading-relaxed">{row.render(s)}</td>
                     ))}
                   </tr>
                 ))}
